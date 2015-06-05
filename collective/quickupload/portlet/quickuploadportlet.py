@@ -173,10 +173,20 @@ class Renderer(base.Renderer):
     @property
     def available(self):
 # modified by me begin
-        if self.context.Type() == "Travel" and self.request['PATH_INFO'][-5:] == "/edit":
+        try:
+            templateFileName = getattr(self.context.request['PUBLISHED'].template, 'filename', '')
+        except:
+            return False
+#        if self.context.Type() == "Travel" and self.request['PATH_INFO'][-5:] in "/edit/":
+        if self.context.Type() == "Travel" and 'editForm.pt' in templateFileName:
             return True
-        if self.context.Type() == "Album" and self.request['PATH_INFO'][-5:] == "/edit":
+#        if self.context.Type() == "Album" and self.request['PATH_INFO'][-5:] in "/edit/":
+        if self.context.Type() == "Album" and 'editForm.pt' in templateFileName:
             return True
+
+        if 'editForm.pt' not in templateFileName:
+            return False
+
 # modified by me end
 
         if not (IViewView.providedBy(self.view)

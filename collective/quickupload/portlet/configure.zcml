@@ -18,10 +18,10 @@
      interface=".quickuploadportlet.IQuickUploadPortlet"
      assignment=".quickuploadportlet.Assignment"
      view_permission="zope2.View"
-     edit_permission="plone.app.portlets.ManagePortlets"
+     edit_permission="cmf.ManagePortal"
      renderer=".quickuploadportlet.Renderer"
      addview=".quickuploadportlet.AddForm"
      editview=".quickuploadportlet.EditForm"
      />     
-
+<!-- edit_permission="plone.app.portlets.ManagePortlets" -->
 </configure>
